@@ -1,0 +1,303 @@
+/* Note: You must place the font files in a folder named 'fonts' to make the text style work. */
+@font-face {
+  font-family: "Rainy Hearts";
+  src: url("fonts/rainyhearts.woff") format("woff"),
+       url("fonts/rainyhearts.ttf") format("truetype"),
+       url("fonts/rainyhearts.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "bluescreen";
+  src: url("fonts/bluescreen.woff") format("woff"),
+       url("fonts/bluescreen.ttf") format("truetype");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /* UPDATED: Local path for background GIF */
+  background-image: url("images/bgs/background.gif"); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: black;
+  /* UPDATED: Local path for cursor GIF */
+  cursor: url("images/graphics/eyeball_cursor.gif"), auto;
+  overflow: hidden;
+}
+
+/* CRT Screen Overlay and Flicker Effects (DO NOT CHANGE) */
+.crt {
+  animation: textShadow 1.6s infinite;
+}
+
+.crt::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+.crt::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.27861; }
+  5% { opacity: 0.34769; }
+  10% { opacity: 0.23604; }
+  15% { opacity: 0.90626; }
+  20% { opacity: 0.18128; }
+  25% { opacity: 0.83891; }
+  30% { opacity: 0.65583; }
+  35% { opacity: 0.67807; }
+  40% { opacity: 0.26559; }
+  45% { opacity: 0.84693; }
+  50% { opacity: 0.96019; }
+  55% { opacity: 0.08594; }
+  60% { opacity: 0.20313; }
+  65% { opacity: 0.71988; }
+  70% { opacity: 0.53455; }
+  75% { opacity: 0.37288; }
+  80% { opacity: 0.71428; }
+  85% { opacity: 0.70419; }
+  90% { opacity: 0.7003; }
+  95% { opacity: 0.36108; }
+  100% { opacity: 0.24387; }
+}
+
+@keyframes textShadow {
+  0%, 100% {
+    text-shadow: 0.5px 0 1px rgba(0,30,255,0.5), -0.5px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+  50% {
+    text-shadow: 2.5px 0 1px rgba(0,30,255,0.5), -2.5px 0 1px rgba(255,0,80,0.3), 0 0 3px;
+  }
+}
+
+.centered-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45vw;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 1;
+  opacity: 1;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 80%;
+  color: #fff;
+  font-family: "bluescreen", monospace;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.links a {
+  text-decoration: none;
+  margin: 0 -20px;
+  width: 15vw;
+  font-size: 1.7vw;
+  transition: color 0.3s ease;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.links a:hover {
+  color: red;
+}
+
+.links2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 86%;
+  color: #fff;
+  font-family: "bluescreen", monospace;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.links2 a {
+  text-decoration: none;
+  margin: 0 -20px;
+  width: 15vw;
+  font-size: 1.7vw;
+  transition: color 0.3s ease;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.links2 a:hover {
+  color: red;
+}
+
+.heart {
+  position: fixed;
+  right: 25%;
+  top: 10%;
+  z-index: 0;
+  width: 40vh;
+}
+
+.butterfly {
+  position: fixed;
+  left: 6%;
+  bottom: 10%;
+  z-index: 0;
+  width: 40vh;
+}
+
+/* POPUP STYLING */
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.popup-content {
+  background-color: #000;
+  margin: 15% auto;
+  padding: 20px;
+  border: 4px solid red;
+  width: 40%;
+  text-align: center;
+  box-shadow: 0 0 20px red;
+  font-family: "bluescreen", monospace;
+  color: #fff;
+}
+
+.popup-content h2 {
+  color: red;
+  font-family: "Rainy Hearts", monospace;
+  text-shadow: 2px 2px 5px pink;
+  margin-bottom: 15px;
+}
+
+.popup-content a {
+  color: pink;
+  text-decoration: none;
+  display: block;
+  margin: 5px 0;
+  font-size: 1.2em;
+}
+
+.popup-content a:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+.popup-content button {
+  background-color: red;
+  color: #fff;
+  border: 2px solid pink;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-family: "bluescreen", monospace;
+  font-size: 1em;
+}
+
+.popup-content button:hover {
+  background-color: pink;
+  color: #000;
+}
+
+.blinking {
+  animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .centered-image {
+    width: 80vw !important;
+    top: 30% !important;
+  }
+
+  /* Fixed elements are too big on mobile, hide them or adjust */
+  .heart, .butterfly {
+    display: none !important;
+  }
+
+  /* Container for the links stacked vertically, spacing controlled */
+  .links, .links2 {
+    position: relative !important;
+    top: 0 !important;
+    width: 100% !important;
+    flex-direction: column !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+  }
+
+  /* Links styling with controlled margins for even spacing */
+  .links a, .links2 a {
+    margin: 6px 0 !important;
+    width: 90% !important;
+    font-size: 5vw !important;
+  }
+
+  /* Adjust spacing between .links and .links2 to look aligned and closer */
+  .links {
+    margin-bottom: 8px !important; /* space below links */
+  }
+  .links2 {
+    margin-top: 0 !important; /* remove top margin so it sits closer */
+  }
+
+  .popup-content {
+    width: 90%;
+    margin: 20% auto;
+  }
+}
