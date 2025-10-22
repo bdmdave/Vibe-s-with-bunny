@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>꒰ა music with bunny ໒꒱</title> 
+    <script src="security.js"></script>
+    <link
+      rel="icon"
+      href="images/graphics/favicons/favicon.gif"
+      type="image/gif"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head> 
+  <body>
+  <div class="crt">
+    
+    <img
+      src="images/graphics/heart.png"
+      alt="heart graphic"
+      class="heart"
+    />
+    <img
+      src="images/graphics/butterfly.png"
+      alt="butterfly graphic"
+      class="butterfly"
+    />
+
+    <img
+      src="images/axa_glow_logo2_white.png"
+      alt="Music with Bunny Logo"
+      class="centered-image"
+    />
+
+    <div class="links">
+      <a class="home" href="index.html">h o M e</a>
+      <a class="music" href="tracks.html">m U s I c</a>
+      <a class="about" href="about.html">a B o U t</a>
+      <a class="blog" href="blog.html">b L O g</a>
+      <a class="contact" href="contact.html">c O n T a C t</a>
+      <a class="guestbook" href="guestbook.html">g U e S t B o O k</a>
+    </div>
+
+    <div class="links2">
+      <a class="playlists" href="playlists.html">p L a Y l I s T s</a>
+      <a class="iqbal" href="profile.html">i Q b A L</a>
+      <a class="download" href="downloads.html">d O w N l O a D</a>
+      <a class="extras" href="#">e X t R a S</a>
+    </div>
+
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <h2>e X t R a S</h2>
+        <p><a href="#" id="openButtonsPopup">b U t T o N z (w E b R i N g s)</a></p>
+        <p><a href="links.html"> l I n K s </a></p>
+        <p><a href="disclaimer.html" class="blinking">d I s C l A i M e R</a></p>
+        <p><a href="credits.html">c R e D i T s</a></p>
+        <button onclick="closePopup()">C L o S e</button>
+      </div>
+    </div>
+    </div>
+
+    <script>
+  const extrasLink = document.querySelector('.extras');
+  const popup = document.getElementById('popup');
+  const popupContent = document.querySelector('.popup-content');
+
+  extrasLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    popup.style.display = 'block';
+    
+    // Re-set the popup content to 'extras' content on open
+    popupContent.innerHTML = `
+        <h2>e X t R a S</h2>
+        <p><a href="#" id="openButtonsPopup">b U t T o N z (w E b R i N g s)</a></p> 
+        <p><a href="links.html"> l I n K s </a></p>
+        <p><a href="disclaimer.html" class="blinking">d I s C l A i M e R</a></p>
+        <p><a href="credits.html">c R e D i T s</a></p>
+        <button onclick="closePopup()">C L o S e</button>
+    `;
+  });
+
+  function closePopup() {
+    popup.style.display = 'none';
+  }
+
+  // Logic to switch the popup to the "Buttonz" content, replacing the original webring buttons with placeholders
+  document.addEventListener('click', function(event) {
+    if (event.target && event.target.id === 'openButtonsPopup') {
+      event.preventDefault();
+
+      popupContent.innerHTML = `
+        <h2>B U t T o N z</h2>
+          <p>Your webring buttons go here. Original buttons replaced with placeholders:</p>
+          <a href="#"><img src="https://placehold.co/88x31/FF69B4/000000.png?text=YOUR+BUTTON"></a>
+          <a href="#"><img src="https://placehold.co/88x31/000000/FFFFFF.png?text=FRIEND+1"></a>
+          <a href="#"><img src="https://placehold.co/88x31/FFFFFF/FF69B4.png?text=FRIEND+2"></a>
+          <a href="#"><img src="https://placehold.co/88x31/FF0000/FFFFFF.png?text=FRIEND+3"></a>
+          <a href="#"><img src="https://placehold.co/88x31/0000FF/FFFFFF.png?text=FRIEND+4"></a>
+        <br><br>
+          <button onclick="closePopup()">C L o S e</button>
+      `;
+    }
+  });
+
+</script>
+  
+</body>
+</html>
